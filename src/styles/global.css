@@ -1,1 +1,14 @@
 @import "tailwindcss";
+
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/PlayfairDisplay-VariableFont_wght.ttf");
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@theme {
+  --font-heading: "Playfair Display", "sans-serif";
+}
