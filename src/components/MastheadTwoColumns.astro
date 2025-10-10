@@ -1,0 +1,23 @@
+---
+import TextCard, { type Props as TextCardProps } from "./TextCard.astro";
+import Asset, { type Props as AssetProps } from "./Asset.astro";
+
+export interface Props {
+  classname?: string;
+  textCardProps: TextCardProps;
+  assetProps: AssetProps;
+}
+const { classname, textCardProps, assetProps } = Astro.props as Props;
+---
+
+<section
+  class={`h-[100vh] grid lg:grid-cols-2 items-center gap-4 mx-auto lg:px-28 relative ${classname}`}
+>
+  <div
+    class="absolute z-10 h-full w-full"
+    style="box-shadow: inset 0 0 70px rgba(0,0,0,0.26);"
+  >
+  </div>
+  <TextCard {...textCardProps} />
+  <Asset {...assetProps} />
+</section>
