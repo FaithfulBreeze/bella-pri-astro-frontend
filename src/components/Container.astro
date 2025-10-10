@@ -1,0 +1,10 @@
+---
+export interface Props {
+  classname?: string;
+}
+const { classname } = Astro.props as Props;
+---
+
+<div class={`block mx-auto max-w-[1480px] px-7 ${classname}`}>
+  <slot />
+</div>
