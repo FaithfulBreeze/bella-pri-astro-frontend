@@ -1,5 +1,28 @@
 ---
+import MastheadTwoColumns from "../components/MastheadTwoColumns.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout />
+<Layout>
+  <MastheadTwoColumns
+    classname="bg-whitepink"
+    textCardProps={{
+      classname:
+        "bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent font-heading max-lg:mx-auto max-lg:mt-30 z-20",
+      heading: "Bella Pri Makes",
+      headingFontSize: "text-7xl md:text-8xl",
+      subheading: "Beleza com propósito, leveza e cor.",
+      subheadingFontSize: "text-2xl md:text-3xl",
+      linkCollection: [
+        { href: "#highlights", label: "Destaques", color: "secondary" },
+        { href: "#search", label: "Pesquisar", color: "secondary" },
+      ],
+    }}
+    assetProps={{
+      src: "/logo.jpeg",
+      alt: "Logo Bella Pri",
+      width: 832,
+      height: 832,
+    }}
+  />
+</Layout>
