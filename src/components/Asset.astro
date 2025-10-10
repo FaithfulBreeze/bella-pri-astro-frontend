@@ -1,0 +1,14 @@
+---
+import Image from "astro/components/Image.astro";
+
+export interface Props {
+  classname?: string;
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+const { classname, src, alt, width, height } = Astro.props as Props;
+---
+
+<Image class={classname} src={src} alt={alt} width={width} height={height} />
