@@ -1,5 +1,5 @@
 ---
-import Anchor, { type Props as AnchorProps } from "./Anchor.astro";
+import Anchor, { type Props as AnchorProps } from "../Anchor/Anchor.astro";
 
 export interface Props {
   classname?: string;
@@ -31,9 +31,7 @@ const alignment =
     {eyebrow && <p class="uppercase text-[10px]">{eyebrow}</p>}
     {
       heading && (
-        <h2 class={`mb-4 ${headingFontSize || "text-5xl"}`}>
-          {heading}
-        </h2>
+        <h2 class={`mb-4 ${headingFontSize || "text-5xl"}`}>{heading}</h2>
       )
     }
     {
