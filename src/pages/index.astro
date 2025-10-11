@@ -4,7 +4,9 @@ import MastheadTwoColumns from "../components/MastheadTwoColumns.astro";
 import Layout from "../layouts/Layout.astro";
 import { GetHighlightedProductsService } from "../services/getHighlightedProductsService";
 
-const products = await GetHighlightedProductsService.execute()
+process.loadEnvFile();
+
+const products = await GetHighlightedProductsService.execute();
 ---
 
 <Layout>
