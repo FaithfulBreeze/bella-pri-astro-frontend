@@ -1,4 +1,4 @@
-import type { IProduct } from "../interfaces/product";
+import type { IProduct } from "../../../interfaces/product";
 
 export interface Props extends IProduct {
   isSliderCard: boolean;

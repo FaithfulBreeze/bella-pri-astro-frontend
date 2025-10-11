@@ -1,9 +1,9 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import ProductCard from "./ProductCard";
-import { swiperConfig } from "../common/config/swiper";
-import type { IProduct } from "../interfaces/product";
+import ProductCard from "../../elements/ProductCard/ProductCard";
+import { swiperConfig } from "../../../common/config/swiper";
+import type { IProduct } from "../../../interfaces/product";
 
 export interface Props {
   products: IProduct[];
