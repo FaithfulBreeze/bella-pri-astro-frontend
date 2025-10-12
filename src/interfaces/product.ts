@@ -1,3 +1,5 @@
+import type { ICategory } from "./category";
+
 export interface IProduct {
   id: number;
   name: string;
@@ -7,5 +9,5 @@ export interface IProduct {
   highlighted: boolean;
   mainAsset?: { id: number; name: string; src: string };
   assets: { id: number; name: string; src: string }[];
-  categories: { id: number; label: string }[];
+  categories: ICategory[];
 }

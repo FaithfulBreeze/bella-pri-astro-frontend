@@ -7,7 +7,7 @@ interface ResponseProps {
 
 export class GetHighlightedProductsService {
   static async execute() {
-    const response = await fetch(`${process.env.BACKEND_URL}/products/highlighted`);
+    const response = await fetch(`${import.meta.env.PUBLIC_BACKEND_URL}/products/highlighted`);
     const data: ResponseProps = await response.json();
     return data.products;
   }
