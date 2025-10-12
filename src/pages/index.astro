@@ -3,14 +3,12 @@ import Asset from "../components/elements/Asset/Asset.astro";
 import QuoteCard from "../components/elements/QuoteCard/QuoteCard.astro";
 import Footer from "../components/sections/Footer/Footer.astro";
 import HighlightedProductsSlider from "../components/sections/HighlightedProductsSlider/HighlightedProductsSlider";
+import HighlightedTiktokVideoGrid from "../components/sections/HighlightedTiktokVideoGrid/HighlightedTiktokVideoGrid.astro";
 import MastheadTwoColumns from "../components/sections/MastheadTwoColumns/MastheadTwoColumns.astro";
 import Search from "../components/sections/Search/Search.astro";
 import TwoColumn from "../components/sections/TwoColumn/TwoColumn.astro";
 import Layout from "../layouts/Layout.astro";
-import { GetHighlightedProductsService } from "../services/getHighlightedProductsService";
-import 'dotenv/config'
-
-const products = await GetHighlightedProductsService.execute();
+import "dotenv/config";
 ---
 
 <Layout>
@@ -35,7 +33,7 @@ const products = await GetHighlightedProductsService.execute();
       height: 600 * 0.7,
     }}
   />
-  <HighlightedProductsSlider products={products} client:load />
+  <HighlightedProductsSlider client:load />
   <Search
     textCardProps={{
       heading: "Buscar",
@@ -60,5 +58,14 @@ const products = await GetHighlightedProductsService.execute();
       height={642}
     />
   </TwoColumn>
+  <HighlightedTiktokVideoGrid
+    textCardProps={{
+      heading: "Bella Pri no TikTok",
+      align: "center",
+      headingFontSize: "text-5xl md:text-7xl",
+      classname:
+        "bg-gradient-to-r from-[#a029a1] to-[#e268bb] bg-clip-text text-transparent font-heading max-lg:mx-auto z-20",
+    }}
+  />
   <Footer />
 </Layout>

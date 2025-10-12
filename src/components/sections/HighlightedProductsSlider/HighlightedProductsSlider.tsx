@@ -1,15 +1,21 @@
+import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import ProductCard from "../../elements/ProductCard/ProductCard";
 import { swiperConfig } from "../../../common/config/swiper";
 import type { IProduct } from "../../../interfaces/product";
+import { GetHighlightedProductsService } from "../../../services/getHighlightedProductsService";
 
-export interface Props {
-  products: IProduct[];
-}
+export default function HighlightedProductsSlider() {
+  const [products, setProducts] = useState<IProduct[]>([]);
 
-export default function HighlightedProductsSlider({ products }: Props) {
+  useEffect(() => {
+    GetHighlightedProductsService.execute().then((products) =>
+      setProducts(products)
+    );
+  }, []);
+
   return (
     <div id="highlights" className="block mx-auto max-w-[1480px] px-7">
       <Swiper {...swiperConfig}>
