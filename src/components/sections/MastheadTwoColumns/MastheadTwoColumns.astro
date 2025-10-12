@@ -15,13 +15,13 @@ const { classname, textCardProps, assetProps } = Astro.props as Props;
 ---
 
 <section
-  class={`h-[100vh] grid lg:grid-cols-2 items-center gap-4 mx-auto lg:px-28 relative ${classname}`}
+  class={`h-[100vh] mb-12 grid lg:grid-cols-2 items-center gap-4 mx-auto lg:px-28 relative ${classname}`}
 >
   <div
     class="absolute z-10 h-full w-full"
     style="box-shadow: inset 0 0 70px rgba(0,0,0,0.26);"
   >
   </div>
-  <TextCard {...textCardProps} />
-  <Asset {...assetProps} />
+  <TextCard classname="mx-auto" {...textCardProps} />
+  <Asset classname="mx-auto" {...assetProps} />
 </section>
