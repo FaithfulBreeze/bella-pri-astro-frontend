@@ -1,0 +1,22 @@
+---
+import Container from "../../elements/Container/Container.astro";
+import TextCard, {
+  type Props as TextCardProps,
+} from "../../elements/TextCard/TextCard.astro";
+import Filter from "./components/Filter";
+
+export interface Props {
+  textCardProps: TextCardProps;
+}
+
+const { textCardProps } = Astro.props;
+---
+
+<Container>
+  <div
+    class="bg-whitepink flex flex-col gap-6 lg:gap-12 px-4 md:px-12 py-12 rounded-lg shadow-md"
+  >
+    <TextCard {...textCardProps} />
+    <Filter client:load />
+  </div>
+</Container>
