@@ -1,6 +1,7 @@
 ---
 import HighlightedProductsSlider from "../components/sections/HighlightedProductsSlider/HighlightedProductsSlider";
 import MastheadTwoColumns from "../components/sections/MastheadTwoColumns/MastheadTwoColumns.astro";
+import Search from "../components/sections/Search/Search.astro";
 import Layout from "../layouts/Layout.astro";
 import { GetHighlightedProductsService } from "../services/getHighlightedProductsService";
 
@@ -32,4 +33,13 @@ const products = await GetHighlightedProductsService.execute();
     }}
   />
   <HighlightedProductsSlider products={products} client:load />
+  <Search
+    textCardProps={{
+      heading: "Buscar",
+      align: "center",
+      headingFontSize: "text-6xl md:text-8xl",
+      classname:
+        "bg-gradient-to-r from-[#a029a1] to-[#e268bb] bg-clip-text text-transparent font-heading max-lg:mx-auto z-20",
+    }}
+  />
 </Layout>
