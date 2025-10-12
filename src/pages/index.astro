@@ -1,8 +1,11 @@
 ---
+import Asset from "../components/elements/Asset/Asset.astro";
+import QuoteCard from "../components/elements/QuoteCard/QuoteCard.astro";
 import Footer from "../components/sections/Footer/Footer.astro";
 import HighlightedProductsSlider from "../components/sections/HighlightedProductsSlider/HighlightedProductsSlider";
 import MastheadTwoColumns from "../components/sections/MastheadTwoColumns/MastheadTwoColumns.astro";
 import Search from "../components/sections/Search/Search.astro";
+import TwoColumn from "../components/sections/TwoColumn/TwoColumn.astro";
 import Layout from "../layouts/Layout.astro";
 import { GetHighlightedProductsService } from "../services/getHighlightedProductsService";
 
@@ -43,5 +46,20 @@ const products = await GetHighlightedProductsService.execute();
         "bg-gradient-to-r from-[#a029a1] to-[#e268bb] bg-clip-text text-transparent font-heading max-lg:mx-auto z-20",
     }}
   />
+  <TwoColumn classname="bg-whitepink rounded-lg overflow-hidden shadow-md">
+    <QuoteCard
+      slot="sideA"
+      author="Priscila - Bella Pri"
+      quote="Eu não escolhi ter uma loja por acaso.\nComecei com medo e dúvidas, mas com o coração cheio de vontade de fazer dar certo. É aqui que transformo amor em trabalho todos os dias."
+    />
+    <Asset
+      slot="sideB"
+      classname="w-full h-full object-cover"
+      src="/testimonial.jpg"
+      alt="Relato pessoal da Priscila"
+      width={704}
+      height={642}
+    />
+  </TwoColumn>
   <Footer />
 </Layout>
