@@ -1,0 +1,25 @@
+---
+import Container from '../../elements/Container/Container.astro';
+
+export interface Props {
+  hasBorders?: boolean;
+  isRounded?: boolean;
+  classname: string;
+}
+
+const { hasBorders, isRounded, classname } = Astro.props as Props;
+
+const borderClass = hasBorders ? "border border-[#9d2b9d]" : "";
+const roundedClass = isRounded ? "rounded-md overflow-hidden" : "";
+---
+<Container>
+<section class={`grid lg:grid-cols-2 gap-4 items-center ${classname}`}>
+  <div class={`${borderClass} ${roundedClass}`}>
+    <slot name="sideA" />
+  </div>
+
+  <div class={`${borderClass} ${roundedClass}`}>
+    <slot name="sideB" />
+  </div>
+</section>
+</Container>
