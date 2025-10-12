@@ -1,4 +1,5 @@
 ---
+import Footer from "../components/sections/Footer/Footer.astro";
 import HighlightedProductsSlider from "../components/sections/HighlightedProductsSlider/HighlightedProductsSlider";
 import MastheadTwoColumns from "../components/sections/MastheadTwoColumns/MastheadTwoColumns.astro";
 import Search from "../components/sections/Search/Search.astro";
@@ -42,4 +43,5 @@ const products = await GetHighlightedProductsService.execute();
         "bg-gradient-to-r from-[#a029a1] to-[#e268bb] bg-clip-text text-transparent font-heading max-lg:mx-auto z-20",
     }}
   />
+  <Footer />
 </Layout>
