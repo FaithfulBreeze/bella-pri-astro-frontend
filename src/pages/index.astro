@@ -8,8 +8,7 @@ import Search from "../components/sections/Search/Search.astro";
 import TwoColumn from "../components/sections/TwoColumn/TwoColumn.astro";
 import Layout from "../layouts/Layout.astro";
 import { GetHighlightedProductsService } from "../services/getHighlightedProductsService";
-
-process.loadEnvFile();
+import 'dotenv/config'
 
 const products = await GetHighlightedProductsService.execute();
 ---
