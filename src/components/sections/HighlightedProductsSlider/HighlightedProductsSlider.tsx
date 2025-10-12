@@ -11,7 +11,7 @@ export interface Props {
 
 export default function HighlightedProductsSlider({ products }: Props) {
   return (
-    <div className="block mx-auto max-w-[1480px] px-7">
+    <div id="highlights" className="block mx-auto max-w-[1480px] px-7">
       <Swiper {...swiperConfig}>
         {products.map((product) => (
           <SwiperSlide key={product.id} className="overflow-hidden">

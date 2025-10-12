@@ -27,10 +27,10 @@ const products = await GetHighlightedProductsService.execute();
       ],
     }}
     assetProps={{
-      src: "/logo.jpeg",
+      src: "/logo.png",
       alt: "Logo Bella Pri",
-      width: 832,
-      height: 832,
+      width: 1080 * 0.7,
+      height: 600 * 0.7,
     }}
   />
   <HighlightedProductsSlider products={products} client:load />
