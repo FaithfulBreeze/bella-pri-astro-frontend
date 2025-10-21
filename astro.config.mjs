@@ -1,16 +1,13 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
-
-import react from '@astrojs/react';
-
-import node from '@astrojs/node';
+import { defineConfig } from "astro/config";
+import tailwind from "@astrojs/tailwind";
+import vercel from "@astrojs/vercel";
+import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [react(), tailwind()],
 
-  adapter: node({
-    mode: 'standalone',
-  }),
+  output: "server",
+  adapter: vercel(),
 });
