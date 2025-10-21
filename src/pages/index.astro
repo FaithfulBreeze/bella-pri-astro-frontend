@@ -5,6 +5,7 @@ import Footer from "../components/sections/Footer/Footer.astro";
 import HighlightedProductsSlider from "../components/sections/HighlightedProductsSlider/HighlightedProductsSlider";
 import HighlightedTiktokVideoGrid from "../components/sections/HighlightedTiktokVideoGrid/HighlightedTiktokVideoGrid.astro";
 import MastheadTwoColumns from "../components/sections/MastheadTwoColumns/MastheadTwoColumns.astro";
+import Navigation from "../components/sections/Navigation/Navigation.astro";
 import Search from "../components/sections/Search/Search.astro";
 import TwoColumn from "../components/sections/TwoColumn/TwoColumn.astro";
 import Layout from "../layouts/Layout.astro";
@@ -33,7 +34,19 @@ import "dotenv/config";
       height: 600 * 0.7,
     }}
   />
-  <HighlightedProductsSlider client:load />
+  <Navigation
+    classname="!mt-0"
+    linkCollection={[
+      { label: "Home", href: "/", color: "primary", isTextVariation: true },
+      {
+        label: "Carrinho",
+        href: "/cart",
+        color: "primary",
+        isTextVariation: true,
+      },
+    ]}
+  />
+  <HighlightedProductsSlider classname="mt-12" client:load />
   <Search
     textCardProps={{
       heading: "Buscar",
