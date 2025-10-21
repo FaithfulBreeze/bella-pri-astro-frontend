@@ -1,0 +1,27 @@
+---
+import Anchor, { type Props as AnchorProps } from "../../elements/Anchor/Anchor.astro";
+
+export interface Props {
+  classname?: string
+  linkCollection?: AnchorProps[];
+}
+
+const { classname, linkCollection } = Astro.props as Props;
+---
+
+<nav class=`z-30 shadow-md w-full sticky top-0 bg-whitepink px-12 pb-1 ${classname}`>
+  <div class="flex justify-between items-center">
+    <a class="block text-center" href="/">
+      <img
+        class="mx-auto]"
+        src="/short-logo.png"
+        height="150"
+        width="100"
+        alt="Bella Pri Logo"
+      />
+    </a>
+    <div class="flex gap-4">
+      {linkCollection?.map(link => <Anchor {...link} />)}
+    </div>
+  </div>
+</nav>

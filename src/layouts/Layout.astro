@@ -1,15 +1,22 @@
+---
+export interface Props {
+  classname?: string;
+}
+
+const { classname } = Astro.props as Props;
+---
+
 <!doctype html>
 <html lang="pt-BR">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/short-logo.png" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Bella Pri</title>
-		<link rel="stylesheet" href="/styles/global.css">
-	</head>
-	<body class="space-y-12">
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/short-logo.png" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Bella Pri</title>
+    <link rel="stylesheet" href="/styles/global.css" />
+  </head>
+  <body class={`space-y-12 ${classname}`}>
+    <slot />
+  </body>
 </html>
-

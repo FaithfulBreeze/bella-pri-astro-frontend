@@ -1,7 +1,7 @@
 import { Autoplay, Pagination } from "swiper/modules";
 import type { SwiperProps } from "swiper/react";
 
-export const swiperConfig: SwiperProps = {
+export const defaultSwiperConfig: SwiperProps = {
   modules: [Autoplay, Pagination],
   breakpoints: {
     640: { slidesPerView: 1 },
@@ -18,4 +18,11 @@ export const swiperConfig: SwiperProps = {
   className: "rounded-md overflow-hidden border border-pink-100",
   grabCursor: true,
   spaceBetween: 0,
+};
+
+export const productPageSwiperConfig: SwiperProps = {
+  ...defaultSwiperConfig,
+  breakpoints: {},
+  style: {},
+  className: "",
 };
