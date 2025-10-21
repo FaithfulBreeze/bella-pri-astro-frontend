@@ -1,0 +1,31 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { GetProductService } from "../../services/getProductService";
+import TwoColumn from "../../components/sections/TwoColumn/TwoColumn.astro";
+import AssetSlider from "../../components/elements/AssetSlider/AssetSlider";
+import PriceCard from "../../components/elements/PriceCard/PriceCard";
+import Footer from "../../components/sections/Footer/Footer.astro";
+import Navigation from "../../components/sections/Navigation/Navigation.astro";
+
+export const prerender = false;
+
+const { id } = Astro.params;
+if (!id) return;
+
+const product = await GetProductService.execute({ id });
+---
+
+<Layout>
+  <Navigation
+    linkCollection={[
+      { label: "Home", href: "/", color: "primary", isTextVariation: true },
+      { label: "Carrinho", href: "/cart", color: "primary", isTextVariation: true },
+
+    ]}
+  />
+  <TwoColumn classname="p-4 bg-whitepink rounded-lg shadow-md">
+    <AssetSlider slot="sideA" assets={product.assets} client:load />
+    <PriceCard slot="sideB" product={product} client:load />
+  </TwoColumn>
+  <Footer />
+</Layout>
