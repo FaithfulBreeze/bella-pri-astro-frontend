@@ -1,3 +1,4 @@
+import type { IAsset } from "./asset";
 import type { ICategory } from "./category";
 
 export interface IProduct {
@@ -7,7 +8,7 @@ export interface IProduct {
   quantity: number;
   link?: string;
   highlighted: boolean;
-  mainAsset?: { id: number; name: string; src: string };
-  assets: { id: number; name: string; src: string }[];
+  mainAsset?: IAsset;
+  assets: IAsset[];
   categories: ICategory[];
 }
