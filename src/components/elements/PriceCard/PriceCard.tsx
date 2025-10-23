@@ -2,14 +2,18 @@ import { useState } from "react";
 import type { IProduct } from "../../../interfaces/product";
 import Modal from "../Modal/Modal";
 import { setCartItemService } from "../../../services/setCartItemService";
+import { GetProductQuantityInCartService } from "../../../services/getProductQuantityInCartService";
 
 export interface Props {
   product: IProduct;
 }
 
 export default function PriceCard({ product }: Props) {
+  const quantityInCart = GetProductQuantityInCartService.execute({
+    productId: product.id,
+  });
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedQuantity, setSelectedQuantity] = useState(1);
+  const [selectedQuantity, setSelectedQuantity] = useState(quantityInCart || 1);
 
   const whatsappLink = new URL(import.meta.env.PUBLIC_WHATSAPP_LINK);
   whatsappLink.searchParams.append(
@@ -28,20 +32,19 @@ export default function PriceCard({ product }: Props) {
           onClose={() => setIsOpen(false)}
           onConfirm={() => {
             setCartItemService.execute({ product, quantity: selectedQuantity });
-            setSelectedQuantity(0);
           }}
         >
-          <div className="bg-white p-4 rounded-lg h-40">
+          <div className="bg-white p-6 rounded-lg">
             <p className="text-gray-700 text-center text-xl mb-10">
               Selecione a quantidade
             </p>
 
-            <div className="w-full flex justify-center items-center gap-4">
+            <div className="w-full flex justify-center items-center gap-4 mb-4">
               <button
                 onClick={() =>
                   setSelectedQuantity((prev) => (prev > 1 ? prev - 1 : 1))
                 }
-                className="px-4 py-2 bg-pink-100 text-primary rounded-lg hover:bg-pink-200 transition"
+                className="px-2 py-1 bg-pink-100 text-primary rounded-lg hover:bg-pink-200 transition"
               >
                 -
               </button>
@@ -54,11 +57,22 @@ export default function PriceCard({ product }: Props) {
                     prev < product.quantity ? prev + 1 : prev
                   )
                 }
-                className="px-4 py-2 bg-pink-100 text-primary rounded-lg hover:bg-pink-200 transition"
+                className="px-2 py-1 bg-pink-100 text-primary rounded-lg hover:bg-pink-200 transition"
               >
                 +
               </button>
             </div>
+            <p className="mb-4 text-center text-sm text-gray-700/70">{`${
+              product.quantity
+            } unidade${product.quantity !== 1 ? "s" : ""} ${
+              product.quantity > 1 ? "disponíveis" : "disponível"
+            }
+            `}</p>
+
+            <p className="mb-4 text-center text-sm text-gray-700/70">
+              Seu carrinho terá {selectedQuantity}{" "}
+              {selectedQuantity > 1 ? "unidades" : "unidade"} desse produto!
+            </p>
           </div>
         </Modal>
       )}
@@ -91,8 +105,8 @@ export default function PriceCard({ product }: Props) {
               ? "Produto indisponível no momento"
               : `${product.quantity} unidade${
                   product.quantity !== 1 ? "s" : ""
-                } disponível
-            ${product.quantity !== 1 ? "s" : ""}`}
+                } ${product.quantity > 1 ? "disponíveis" : "disponível"}
+           `}
           </p>
 
           {product.categories?.length > 0 && (

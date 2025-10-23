@@ -6,6 +6,7 @@ interface Props {
   onConfirm: () => void;
   title?: string;
   children: React.ReactNode;
+  hideButtons?: boolean
 }
 
 export default function Modal({
@@ -14,6 +15,7 @@ export default function Modal({
   onConfirm,
   title,
   children,
+  hideButtons = false
 }: Props) {
   if (!isOpen) return null;
 
@@ -63,9 +65,9 @@ export default function Modal({
           </button>
         </div>
 
-        <div className="px-4 text-gray-800">{children}</div>
+        <div className={`px-4 ${hideButtons ? 'pb-4' : ''} text-gray-800`}>{children}</div>
 
-        <div className="flex justify-end gap-4 p-4 border-pink-100">
+        {!hideButtons && <div className="flex justify-end gap-4 p-4 border-pink-100">
           <button
             onClick={onClose}
             className="px-4 py-1 bg-secondary text-white rounded shadow hover:bg-primary transition"
@@ -81,7 +83,7 @@ export default function Modal({
           >
             Confirmar
           </button>
-        </div>
+        </div>}
       </div>
     </div>
   );

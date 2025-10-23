@@ -11,16 +11,26 @@ export class setCartItemService {
     let cart = localStorage.getItem("cart");
 
     if (!cart) {
-      cart = JSON.stringify({});
+      cart = JSON.stringify({ products: [] });
       localStorage.setItem("cart", cart);
     }
 
     const parsedCart = JSON.parse(cart);
 
-    if (parsedCart[product.id]) {
-      parsedCart[product.id].quantity += quantity;
+    const foundProductInCartIndex = parsedCart.products.findIndex(
+      (p: { id: number; quantity: number }) => p.id === product.id
+    );
+
+    if (quantity === 0) {
+      if (foundProductInCartIndex !== -1) {
+        parsedCart.products.splice(foundProductInCartIndex, 1);
+      }
     } else {
-      parsedCart[product.id] = { product, quantity };
+      if (foundProductInCartIndex !== -1) {
+        parsedCart.products[foundProductInCartIndex].quantity = quantity;
+      } else {
+        parsedCart.products.push({ id: product.id, quantity });
+      }
     }
 
     localStorage.setItem("cart", JSON.stringify(parsedCart));
