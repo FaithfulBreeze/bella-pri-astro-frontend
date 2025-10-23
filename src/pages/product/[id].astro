@@ -25,7 +25,7 @@ const product = await GetProductService.execute({ id });
   />
   <TwoColumn classname="p-4 bg-whitepink rounded-lg shadow-md">
     <AssetSlider slot="sideA" assets={product.assets} client:load />
-    <PriceCard slot="sideB" product={product} client:load />
+    <PriceCard slot="sideB" product={product} client:only="react" />
   </TwoColumn>
   <Footer />
 </Layout>

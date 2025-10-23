@@ -1,0 +1,19 @@
+---
+import CartSummaryCard from "../../components/elements/CartSummaryCard/CartSummaryCard";
+import Container from "../../components/elements/Container/Container.astro";
+import Footer from "../../components/sections/Footer/Footer.astro";
+import Navigation from "../../components/sections/Navigation/Navigation.astro";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout classname="h-screen flex flex-col justify-between">
+  <Navigation
+    linkCollection={[
+      { label: "Home", href: "/", color: "primary", isTextVariation: true },
+    ]}
+  />
+  <Container>
+    <CartSummaryCard client:only="react" />
+  </Container>
+  <Footer />
+</Layout>
